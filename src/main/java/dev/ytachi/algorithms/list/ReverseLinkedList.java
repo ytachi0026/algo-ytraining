@@ -1,4 +1,4 @@
-package dev.ytachi.algorithms;
+package dev.ytachi.algorithms.list;
 
 public class ReverseLinkedList {
 

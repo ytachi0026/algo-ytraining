@@ -1,4 +1,4 @@
-package dev.ytachi.algorithms;
+package dev.ytachi.algorithms.graph;
 
 /**
  * @author ytachi

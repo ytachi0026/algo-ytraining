@@ -1,4 +1,4 @@
-package dev.ytachi.algorithms;
+package dev.ytachi.algorithms.graph;
 
 /**
  * Consider a directed graph whose vertices are numbered from 1 to n.
