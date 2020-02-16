@@ -58,7 +58,7 @@ public class DijkstrasShortestPath {
                 // So, we don't update the minimum distance if the vertex is already on the sptPath
                 if (!sptSet[v] &&
                         graph[u][v] != 0 && // this validation tell us if there is an edge between these two vertices
-                        dist[u] != Integer.MAX_VALUE && // we ignore the vertices that are nit yet updated (sorry)
+                        dist[u] != Integer.MAX_VALUE && // we ignore the vertices that are not yet updated (sorry)
                         dist[u] + graph[u][v] < dist[v]
                 ) {
                     dist[v] = dist[u] + graph[u][v];
