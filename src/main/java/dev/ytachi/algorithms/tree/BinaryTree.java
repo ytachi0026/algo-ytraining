@@ -23,6 +23,7 @@ public class BinaryTree {
         }
     }
 
+    // similar to graph, BREADTH
     public void levelOrderTraversal(final NodeTree nodeTree) {
         // We are gonna use the logic for the graph, depth search, since we are on a tree, we don't have re visiting
 
@@ -44,6 +45,74 @@ public class BinaryTree {
             }
 
         }
+    }
 
+    // using Tree Traversals (Inorder, Preorder and Postorder)
+
+    /**
+     *
+     * Algorithm Preorder(tree)
+     *    1. Visit the root.
+     *    2. Traverse the left subtree, i.e., call Preorder(left-subtree)
+     *    3. Traverse the right subtree, i.e., call Preorder(right-subtree)
+     * @param node
+     */
+    public void printPreorder(NodeTree node) {
+        if (node == null)
+            return;
+
+        /* first print data of node */
+        System.out.print(node.getData() + " ");
+
+        /* then recur on left sutree */
+        printPreorder(node.getLeft());
+
+        /* now recur on right subtree */
+        printPreorder(node.getRight());
+    }
+
+    /**
+     *
+     Algorithm Inorder(tree)
+     1. Traverse the left subtree, i.e., call Inorder(left-subtree)
+     2. Visit the root.
+     3. Traverse the right subtree, i.e., call Inorder(right-subtree)
+     * @param node
+     */
+    public void printInorder(NodeTree node) {
+        if (node == null)
+            return;
+
+        /* first recur on left sutree */
+        printInorder(node.getLeft());
+
+        /* then print data of node */
+        System.out.print(node.getData() + " ");
+
+        /* now recur on right subtree */
+        printInorder(node.getRight());
+    }
+
+    /**
+     *
+     Algorithm Postorder(tree)
+     1. Traverse the left subtree, i.e., call Postorder(left-subtree)
+     2. Traverse the right subtree, i.e., call Postorder(right-subtree)
+     3. Visit the root.
+     * @param node
+     */
+    public void printPostorder(NodeTree node) {
+        if (node == null)
+            return;
+
+        /* first recur on left sutree */
+        printPostorder(node.getLeft());
+
+
+        /* then recur on right subtree */
+        printPostorder(node.getRight());
+
+        /* now print data of node */
+        System.out.print(node.getData() + " ");
     }
 }
