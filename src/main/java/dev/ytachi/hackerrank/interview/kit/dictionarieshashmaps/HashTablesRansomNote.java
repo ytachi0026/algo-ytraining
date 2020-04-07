@@ -3,6 +3,12 @@ package dev.ytachi.hackerrank.interview.kit.dictionarieshashmaps;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
+ * If the specified key is not already associated with a value or is associated with null, associates it with the given non-null value. Otherwise, replaces the associated value with the results of the given remapping function, or removes if the result is null.
+ * This method may be of use when combining multiple mapped values for a key. For example, to either create or append a String msg to a value mapping:
+ *
+ */
 public class HashTablesRansomNote {
 
     public static void main(String[] args) {
