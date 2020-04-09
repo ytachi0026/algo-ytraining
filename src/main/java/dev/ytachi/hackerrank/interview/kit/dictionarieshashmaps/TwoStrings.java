@@ -13,6 +13,25 @@ public class TwoStrings {
     }
 
     /**
+     * https://www.baeldung.com/java-string-to-stream
+     * the good thing about this you have IntStream from chars, so we nee boxed (wrapping) to do the trick to use Set
+     * @param s1
+     * @param s2
+     * @return
+     */
+    static String poweingUpJava8TwoString(String s1, String s2) {
+        final Set<Integer> s1Set = s1.chars().boxed().collect(Collectors.toSet());
+        final Set<Integer> s2Set = s1.chars().boxed().collect(Collectors.toSet());
+
+        s1Set.retainAll(s2Set);
+
+        if (!s1Set.isEmpty()) {
+            return "YES";
+        }
+        return "NO";
+    }
+
+    /**
      * KEY: Remember we have only 24 characters, lets' handle the string as a Set
      * @param s1
      * @param s2
