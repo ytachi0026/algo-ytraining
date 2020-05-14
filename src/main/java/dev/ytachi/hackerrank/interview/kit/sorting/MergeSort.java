@@ -52,7 +52,6 @@ public class MergeSort {
         }
 
         // Let's merge them
-
         int i = 0, j = 0;
 
         // Initial index of merged subarry array
