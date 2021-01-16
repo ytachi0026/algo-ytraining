@@ -37,6 +37,7 @@ public class BalancedBrackets {
         }
         return false;
     }
+
     public String isBalancedBrackets(final String target) {
         final Stack<Character> stack = new Stack<>();
 
@@ -52,6 +53,8 @@ public class BalancedBrackets {
 
                 if (isMatchinPair(stack.peek(), c)) {
                     stack.pop();
+                } else {
+                    return "NO"; // this in case, there is a closing one without a partner.
                 }
             }
         }
