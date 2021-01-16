@@ -7,6 +7,21 @@ import java.util.Queue;
 public class BinaryTree {
     NodeTree root; // We all know that a tree, always have a root leaf
 
+
+    /* Print nodes at the given level */
+    // The minim level is 1
+    void printGivenLevel (NodeTree root, int level) {
+        if (root == null)
+            return;
+        if (level == 1){
+            System.out.print(root.getData() + " ");
+        } else if (level > 1) {
+            printGivenLevel(root.getLeft(), level - 1);
+            printGivenLevel(root.getRight(), level - 1);
+        }
+    }
+
+
     public int maxDepthNodeApproach(final NodeTree node) { // we will use recursion, as I read many solutions and they agree on this
         if (node == null) {
             return 0;// because there is no depth on null
