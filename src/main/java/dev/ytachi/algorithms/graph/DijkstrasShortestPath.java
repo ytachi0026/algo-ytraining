@@ -13,65 +13,63 @@ package dev.ytachi.algorithms.graph;
  * ….c) Update distance value of all adjacent vertices of u. To update the distance values, iterate through all adjacent vertices. For every adjacent vertex v, if sum of distance value of u (from source) and weight of edge u-v, is less than the distance value of v, then update the distance value of v.
  */
 public class DijkstrasShortestPath {
+    // So, we are going to set the top of the arrays, being the number of vertex.
     private static final int V = 9;
-
-    public int minDistance(int dist[], Boolean sptSet[]) {
-        int min = Integer.MAX_VALUE, min_index = -1;
-
-        for (int v = 0; v < V; v++) {
-            if (sptSet[v] == false && dist[v] <= min) {
-                min = dist[v];
-                min_index = v;
-            }
-        }
-
-        return min_index;
-    }
-
     /**
      * Dijkstra's single source shortest path
      * @param graph, the graph is represented using adjacency matrix representation
-     * @param src
+     * @param source
      */
-    public void dijkstra(int graph[][], int src) {
-        int dist[] = new int[V];
-        Boolean sptSet[] = new Boolean[V];
+    public void dijkstra(int graph[][], int source) {
+        int distances[] = new int[V];// Represents the distance of all of them.
+        Boolean sptSet[] = new Boolean[V];// Shortest path tree set
 
-        // Let's set all the vertex distance to infinite.
+        // We initialize the distance of the vertex to INFINITE, and the tree set to false
         for (int i = 0; i < V; i++) {
-            dist[i] = Integer.MAX_VALUE;
+            distances[i] = Integer.MAX_VALUE;
             sptSet[i] = false;
         }
-        // Obviously the source vertex is set to 0.
-        dist[src] = 0;
 
-        for (int count = 0; count < V - 1; count++) {
-            // Let's find the minimum distance that are not on the stpSet
-            int u = minDistance(dist, sptSet);
+        // Since we have source, it's distance will be set to 0
+        distances[source] = 0;
 
-            //  Add this vertex to the sptSet
-            sptSet[u] = true;
-
-            // This is the tricky part, let's update all the vertex adjacent vertices using Dijktra logic
+        // Let's find out the shortest path for all vertex
+        for (int index = 0; index < V-1; index++) {
+            // Pick a vertex u which is not there in sptSet and has minimum distance value.
+            int vertexCandidate = minimumDistance(distances, sptSet);
+            sptSet[vertexCandidate] = true;
+            // Update distance value of all adjacent vertices of u.
             // A bit problematic, i know, but we need to walk to all the adjacent vertices.
-            for (int v = 0; v < V; v++) {
-                // So, we don't update the minimum distance if the vertex is already on the sptPath
-                if (!sptSet[v] &&
-                        graph[u][v] != 0 && // this validation tell us if there is an edge between these two vertices
-                        dist[u] != Integer.MAX_VALUE && // we ignore the vertices that are not yet updated (sorry)
-                        dist[u] + graph[u][v] < dist[v]
-                ) {
-                    dist[v] = dist[u] + graph[u][v];
+            for (int adjacentVertex = 0; adjacentVertex < V; adjacentVertex++) {
+                // The graph is a MATRIX!
+                if (!sptSet[adjacentVertex] && // we don't update the vertex that are already on the tree set
+                        distances[vertexCandidate] != Integer.MAX_VALUE && // we do this because, we are iterating all the vertex, and some distances are not updated
+                        graph[vertexCandidate][adjacentVertex] != 0 && // to validate if there is an edge between the candidate and the supposed adjacent vertex
+                        distances[vertexCandidate] + graph[vertexCandidate][adjacentVertex] <= distances[adjacentVertex] // if sum of distance value of u (from source) and weight of edge u-v, is less than the distance value of v, then update the distance value of v.
+                        ) {
+                    distances[adjacentVertex] = distances[vertexCandidate] + graph[vertexCandidate][adjacentVertex];
                 }
             }
-        }
 
+        }
 
         // let's print the minimal distance to reach each vertices from source
         for (int i = 0; i < V; i++) {
-            System.out.println(String.format("From %s source to %s vertex, the minimum distance is %d", src, i, dist[i]));
+            System.out.println(String.format("From %s source to %s vertex, the minimum distance is %d", source, i, distances[i]));
         }
 
+    }
+
+    public int minimumDistance(int distances[], Boolean sptSet[]) {
+        int minimumIndex = -1;
+        int minimum = Integer.MAX_VALUE;
+        for (int vertex = 0; vertex < V; vertex++) {
+            if (!sptSet[vertex] && distances[vertex] < minimum) {
+                minimum = distances[vertex];
+                minimumIndex = vertex;
+            }
+        }
+        return minimumIndex;
     }
 
     public static void main(String[] args) {
