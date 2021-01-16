@@ -7,12 +7,28 @@ import java.util.Queue;
 public class BinaryTree {
     NodeTree root; // We all know that a tree, always have a root leaf
 
-    public int maxDepth(final NodeTree node) { // we will use recursion, as I read many solutions and they agree on this
+    public int maxDepthNodeApproach(final NodeTree node) { // we will use recursion, as I read many solutions and they agree on this
         if (node == null) {
             return 0;// because there is no depth on null
         } else {
-            int leftDepth = maxDepth(node.getLeft());
-            int rightDepth = maxDepth(node.getRight());
+            int leftDepth = maxDepthNodeApproach(node.getLeft());
+            int rightDepth = maxDepthNodeApproach(node.getRight());
+
+            if (leftDepth > rightDepth) {
+                return leftDepth + 1;
+            } else {
+                return rightDepth + 1;
+            }
+
+        }
+    }
+
+    public int maxDepthEdgeApproach(final NodeTree node) { // we will use recursion, as I read many solutions and they agree on this
+        if (node == null) {
+            return -1;// because there is no depth on null, we return -1, because we are not counting NODES
+        } else {
+            int leftDepth = maxDepthEdgeApproach(node.getLeft());
+            int rightDepth = maxDepthEdgeApproach(node.getRight());
 
             if (leftDepth > rightDepth) {
                 return leftDepth + 1;
