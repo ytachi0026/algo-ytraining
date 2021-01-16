@@ -3,6 +3,8 @@ package dev.ytachi.algorithms.numbers;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
+// https://www.hackerrank.com/challenges/find-the-running-median/problem
+// https://www.youtube.com/watch?v=VmogG01IjYc
 public class FindRunningMedian {
 
     public static void main(String[] args) {

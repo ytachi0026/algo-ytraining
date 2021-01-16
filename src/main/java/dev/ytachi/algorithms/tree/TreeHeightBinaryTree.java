@@ -10,7 +10,7 @@ public class TreeHeightBinaryTree {
         tree.root.getLeft().setLeft(new NodeTree(4));
         tree.root.getLeft().setRight(new NodeTree(5));
 
-        final int treeHeight = tree.maxDepth(tree.root);
+        final int treeHeight = tree.maxDepthNodeApproach(tree.root);
         System.out.println(String.format("The height of the binary tree is: %d", treeHeight ));
     }
 }
