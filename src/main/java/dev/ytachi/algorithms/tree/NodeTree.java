@@ -7,6 +7,7 @@ public class NodeTree {
     NodeTree(final int item) {
         this.data = item;
         this.left = this.right = null;
+        System.out.println();
     }
 
     public int getData() {
