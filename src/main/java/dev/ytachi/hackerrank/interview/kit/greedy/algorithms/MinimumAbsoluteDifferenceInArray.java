@@ -7,7 +7,11 @@ public class MinimumAbsoluteDifferenceInArray {
     public static void main(String[] args) {
         int[] sample1 = new int[]{3, -7, 0};
         System.out.println(minimumAbsoluteDifference(sample1));
+
+        int[] sample2 = new int[]{-59, -36, -13, 1, -53, -92, -2, -96, -54, 75};
+        System.out.println(minimumAbsoluteDifference(sample2));
     }
+
 
     // Complete the minimumAbsoluteDifference function below.
     static int minimumAbsoluteDifferenceInneficient(int[] arr) {

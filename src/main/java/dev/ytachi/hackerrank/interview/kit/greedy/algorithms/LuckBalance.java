@@ -1,7 +1,9 @@
 package dev.ytachi.hackerrank.interview.kit.greedy.algorithms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LuckBalance {
@@ -16,7 +18,7 @@ public class LuckBalance {
     static int luckBalance(int k, int[][] contests) {
         int maxLuck = 0;
         // I think i need to sort the contest
-        List important = new ArrayList<Integer>();
+        final List important = new ArrayList<Integer>();
 
         for (int i = 0; i < contests.length; i++) {
             // You are loosing all the unimportant ones!
