@@ -11,8 +11,25 @@ public class MinimumSwaps2 {
 
     // not efficiente brute force method
     static int bruteForceSwaps(final int[] arr) {
+        int swaps = 0;
+        int nextIndex, target;
+        for (int index = 0; index < arr.length; index++) {
+            if (arr[index] == index + 1) {
+                continue;
+            }
+            // a swap will happen
+            nextIndex = target = index + 1;
+            while (nextIndex < arr.length) {
+                if (arr[nextIndex] == target) {
+                    swaps++;
+                    arr[nextIndex] = arr[index];
+                    arr[index] = target;
+                }
+                nextIndex++;
+            }
+        }
 
-        return 0;
+        return swaps;
     }
 
     // version 2 is more efficiente, since i don't need to create a hashmap, i use the aforementioned array
@@ -20,17 +37,17 @@ public class MinimumSwaps2 {
         boolean[] isVisited = new boolean[arr.length];
         int minimumSwaps = 0;
 
-        for (int k = 0; k < isVisited.length; k++) {
+        for (int index = 0; index < isVisited.length; index++) {
             int nextValue;
 
-            if (!isVisited[k]) {
-                isVisited[k] = true;
-                int position = k + 1;
-                if (position == arr[k]) {
+            if (!isVisited[index]) {
+                isVisited[index] = true;
+                int position = index + 1;// desired position
+                if (position == arr[index]) {// no swap will happen
                     continue;
                 }
 
-                int nextValueIndex = arr[k] - 1;
+                int nextValueIndex = arr[index] - 1;
                 while (!isVisited[nextValueIndex]) {
                     isVisited[nextValueIndex] = true;
                     nextValue = arr[nextValueIndex];
