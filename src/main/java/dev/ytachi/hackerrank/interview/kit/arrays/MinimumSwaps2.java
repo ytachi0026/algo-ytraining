@@ -9,6 +9,30 @@ public class MinimumSwaps2 {
 
     }
 
+    /**
+     * Love solving this problem hahaha.
+     * Credits: https://www.youtube.com/watch?v=JispxxyIxfc
+     * @param arr
+     * @return
+     */
+    static int anotherSolution(final int[] arr) {
+        int minimumSwaps = 0;
+        int index = 0, temp;
+
+        while (index < arr.length) {
+            if (arr[index] != index + 1) {
+                temp = arr[index];
+                arr[index] = arr[temp - 1];
+                arr[temp - 1] = temp;
+                minimumSwaps++;
+            } else {
+                index++;
+            }
+        }
+        return minimumSwaps;
+    }
+
+
     // not efficiente brute force method
     static int bruteForceSwaps(final int[] arr) {
         int swaps = 0;
